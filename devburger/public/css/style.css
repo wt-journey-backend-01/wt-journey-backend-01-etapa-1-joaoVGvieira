@@ -4,12 +4,12 @@ body {
     font-family: Arial, sans-serif;
     background-image:
         linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-        url('/img/fundo.jpg'); /* caminho da imagem corrigido */
+        url('/img/fundo.jpg'); 
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    color: #fff; /* texto branco para contraste */
+    color: #fff; 
     margin: 0;
     padding: 0 20px;
 }
