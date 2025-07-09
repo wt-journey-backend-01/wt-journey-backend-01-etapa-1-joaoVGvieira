@@ -41,25 +41,22 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.post('/contato', (req, res) => {
-    const { nome, email, mensagem } = req.body;
-    console.log(`Nome: ${nome}, Email: ${email}, Mensagem: ${mensagem}`);
+    const { nome, email, mensagem, assunto } = req.body; 
+    console.log(`Nome: ${nome}, Email: ${email}, Assunto: ${assunto}, Mensagem: ${mensagem}`);
     res.send(`
-            <html>
-                <head><link rel="stylesheet" href="/css/style.css"></head>
-                <body>
+        <html>
+            <head><link rel="stylesheet" href="/css/style.css"></head>
+            <body>
                 <h1>Mensagem recebida!</h1>
+                <p><strong>Assunto:</strong> ${assunto}</p>
                 <p><strong>Nome:</strong> ${nome}</p>
                 <p><strong>Email:</strong> ${email}</p>
                 <p><strong>Mensagem:</strong> ${mensagem}</p>
                 <a href="/">Voltar</a>
-                </body>
-            </html>
-            `);
+            </body>
+        </html>
+    `);
 });
-
-
-
-
 
 // Rota para listar todos os lanches
 app.get('/api/lanches', (req, res) => {
