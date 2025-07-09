@@ -1,0 +1,95 @@
+/* public/css/style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-image:
+        linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+        url('/img/fundo.jpg'); /* caminho da imagem corrigido */
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: #fff; /* texto branco para contraste */
+    margin: 0;
+    padding: 0 20px;
+}
+
+h1, h2 {
+  color: #FFB74D; 
+  text-align: center;
+}
+
+form {
+  background-color: rgba(255, 243, 224, 0.9); 
+  border: 1px solid #ffa726;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 500px;
+  color: #333; 
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #FF5722;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #e64a19;
+}
+
+a {
+  color: #FFB74D;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+hr {
+  margin: 30px 0;
+  border: none;
+  height: 1px;
+  background-color: #ddd;
+}
+
+p {
+  max-width: 600px;
+  margin: 10px auto;
+  text-align: center;
+  color: #fff;
+}
+
+button[type="submit"] {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+button[type="submit"]:hover {
+  background-color: #e64a19;
+}
