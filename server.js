@@ -5,6 +5,7 @@ const PORT = 3000;
 const fs = require('fs');
 app.use(express.static('public'));
 
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'index.html'));
@@ -36,12 +37,10 @@ app.get('/contato', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'contato.html'));
 });
 
-
-app.use(express.urlencoded({ extended: true }));
-
-
 app.post('/contato', (req, res) => {
     const { nome, email, mensagem, assunto } = req.body; 
+    if (!nome || !email || !assunto || !mensagem) {
+    return res.status(400).send('Por favor, preencha todos os campos do formulário.');}
     console.log(`Nome: ${nome}, Email: ${email}, Assunto: ${assunto}, Mensagem: ${mensagem}`);
     res.send(`
         <html>
@@ -58,15 +57,28 @@ app.post('/contato', (req, res) => {
     `);
 });
 
-// Rota para listar todos os lanches
+
+
+
 app.get('/api/lanches', (req, res) => {
   const filePath = path.join(__dirname, 'public', 'data', 'lanches.json');
 
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
-      return res.status(500).send('Erro ao ler os lanches.');
+      return res.status(500).json({
+        erro: 'Erro ao acessar o arquivo de lanches.',
+        detalhes: err.message
+      });
     }
-    const lanches = JSON.parse(data);
-    res.json(lanches);
+
+    try {
+      const lanches = JSON.parse(data);
+      res.json(lanches);
+    } catch (parseError) {
+      res.status(500).json({
+        erro: 'Erro ao processar o conteúdo do arquivo JSON.',
+        detalhes: parseError.message
+      });
+    }
   });
 });
